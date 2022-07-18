@@ -1,0 +1,25 @@
+diff --git a/ops/dataset.py b/ops/dataset.py
+index 6ce0691..ee3e4e2 100755
+--- a/ops/dataset.py
++++ b/ops/dataset.py
+@@ -68,7 +68,7 @@ class PANDataSet(data.Dataset):
+             if self.is_lmdb:
+                 return [Image.open(BytesIO(self.database.get("{}/{:03d}/{:08d}".format(directory, 0, idx-1).encode())))]
+             else:
+-                return [Image.open(os.path.join(self.root_path, directory, self.image_tmpl.format(idx))).convert('RGB')]
++                return [Image.open(os.path.join(self.root_path, directory, self.image_tmpl.format(idx-1))).convert('RGB')]
+             '''
+             try:
+                 if self.is_lmdb:
+diff --git a/ops/utils.py b/ops/utils.py
+index 22f4cfb..80384b2 100755
+--- a/ops/utils.py
++++ b/ops/utils.py
+@@ -41,6 +41,6 @@ def accuracy(output, target, topk=(1,)):
+ 
+     res = []
+     for k in topk:
+-        correct_k = correct[:k].view(-1).float().sum(0)
++        correct_k = correct[:k].flatten().float().sum(0)
+         res.append(correct_k.mul_(100.0 / batch_size))
+     return res

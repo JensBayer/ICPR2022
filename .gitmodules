@@ -1,0 +1,3 @@
+[submodule "PAN-PyTorch"]
+	path = PAN-PyTorch
+	url = https://github.com/zhang-can/PAN-PyTorch.git
