@@ -56,4 +56,4 @@ The dataset can freely be requested here:
 
 ## Weights
 The pre-trained weights can be downloaded here: 
-> TBA
+> https://github.com/JensBayer/ICPR2022/releases/tag/v1
